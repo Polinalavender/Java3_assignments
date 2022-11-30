@@ -1,0 +1,2 @@
+public class FuelCore {
+}
