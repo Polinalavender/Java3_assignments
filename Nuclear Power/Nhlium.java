@@ -1,15 +1,15 @@
 public class Nhlium extends FuelCore {
-
-    public Nhlium() {
-        this.THRESHOLD_TEMPERATURE = 328;
+    public Nhlium(int thresholdTemp) {
+        super(thresholdTemp);
     }
 
     public SplitResult split(double temp, double time){
         super.split (temp, time);
+        this.THRESHOLD_TEMPERATURE = 328;
 
         // Updating the residual percentage
         double residualPercentageLost = this.residualPercentage - time * 0.08; // If Java knows math it will multiply first
-        this.residualPercentage = Validator.isPositive(residualPercentageLost) ? residualPercentageLost : 0;
+        this.residualPercentage = Counter.isPositive(residualPercentageLost) ? residualPercentageLost : 0;
 
         double steam;
         double residualHeat;
