@@ -3,10 +3,13 @@ public class Plant {
     private Generator generator;
     private CoolingSystem coolingSystem;
 
-    public Plant(Reactor reactor, Generator generator, CoolingSystem coolingSystem) {
+    private ControlRoom controlRoom;
+
+    public Plant(Reactor reactor, Generator generator, CoolingSystem coolingSystem, ControlRoom controlRoom) {
         this.reactor = reactor;
         this.generator = generator;
         this.coolingSystem = coolingSystem;
+        this.controlRoom = controlRoom;
     }
 
     public Reactor getReactor() {
@@ -31,6 +34,14 @@ public class Plant {
 
     public void setCoolingSystem(CoolingSystem coolingSystem) {
         this.coolingSystem = coolingSystem;
+    }
+
+    public ControlRoom getControlRoom() {
+        return controlRoom;
+    }
+
+    public void setControlRoom(ControlRoom controlRoom) {
+        this.controlRoom = controlRoom;
     }
 
     /**
