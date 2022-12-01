@@ -1,4 +1,4 @@
-public class Generator {
+public class Generator  implements Status {
     private double totalEnergy;
 
     public double generateEnergy(double steamAmount) {
@@ -13,5 +13,13 @@ public class Generator {
 
     private void addEnergy(double amount) {
         this.totalEnergy += amount;
+    }
+
+    @Override
+    public Statuses getStatus() {
+        if(totalEnergy > 500) {
+            return Statuses.UNSTABLE;
+            }
+        return Statuses.STABLE;
     }
 }

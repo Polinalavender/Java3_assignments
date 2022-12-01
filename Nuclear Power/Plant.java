@@ -10,6 +10,9 @@ public class Plant {
         this.generator = generator;
         this.coolingSystem = coolingSystem;
         this.controlRoom = controlRoom;
+        this.controlRoom.addStatus(generator);
+        this.controlRoom.addStatus(reactor);
+        this.controlRoom.addStatus(coolingSystem);
     }
 
     public Reactor getReactor() {
