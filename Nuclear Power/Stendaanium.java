@@ -4,11 +4,14 @@ public class Stendaanium extends FuelCore {
     }
 
     @Override
-    public SplitResult split(double temp, double time) {
+    public SplitResult split(double temp, double time) throws MeltdownException {
         super.split(temp, time);
 
         this.THRESHOLD_TEMPERATURE = 334;
 
+        if (temp > 150) {
+            throw new MeltdownException("Meltdown Stendanium");
+        }
         // Updating the residual percentage
         double residualPercentageLost = this.residualPercentage - ((0.00008 * temp * time) + 0.0003);
 

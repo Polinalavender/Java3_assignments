@@ -1,30 +1,32 @@
+import java.lang.reflect.GenericArrayType;
+import java.util.HashSet;
+import java.util.Set;
+
 public class ControlRoom {
 
-    public interface Reactor() {
-        public default String getStatus() {
-            if (fuelCore.getResidualPercentage() <= 0.2){
-            return "Needs Attention";
-        }
+   private Set<Status> statuses;
+
+    public ControlRoom() {
+        this.statuses = new HashSet<>();
     }
 
-    public interface CoolingSystem(double temp) {}
-        if (temp > 80 && temp < 90) {
-            return "Needs Attention";
-        } else if (temp > 90) {
-            return "Unstable";
-        }
+    public void addStatus(Status status) {
+        this.statuses.add(status);
     }
 
-    public interface  Generator() {
-        if (generator.generateEnergy() > 500){
-            return "Unstable";
-        }
+    public Set<Status> getStatuses() {
+        return statuses;
     }
 
     public boolean isNuclearReactorStable() {
-        if{}
-            return false;
-    } else {
+        boolean isStable = true;
+        for (Status status : statuses) {
+            if (!status.getStatus().equals(Statuses.STABLE)) {
+                return false;
+            }
+        }
         return true;
     }
 }
+
+
